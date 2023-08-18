@@ -8,21 +8,21 @@
 int main()
 {
 	//Window
-	sf::RenderWindow window(sf::VideoMode(640, 480), "Algorithm Visualizer", sf::Style::Titlebar | sf::Style::Close);
-	sf::Event ev;
+	sf::RenderWindow window(sf::VideoMode(640, 480), "Algorithm Visualizer", sf::Style::Default);
+	sf::Event event;
 
-	//Game loop
+	//Event loop
 	while (window.isOpen()) {
 
 
 		//Event polling
-		while (window.pollEvent(ev)) {
-			switch (ev.type) {
+		while (window.pollEvent(event)) {
+			switch (event.type) {
 			case sf::Event::Closed:
 				window.close();
 				break;
 			case sf::Event::KeyPressed:
-				if (ev.key.code == sf::Keyboard::Escape)
+				if (event.key.code == sf::Keyboard::Escape)
 					window.close();
 				break;
 			}
