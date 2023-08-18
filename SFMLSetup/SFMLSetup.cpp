@@ -11,10 +11,6 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(640, 480), "Algorithm Visualizer", sf::Style::Titlebar | sf::Style::Close);
 	sf::Event ev;
 
-	sf::Clock clock;
-
-	sf::Time elapsed = clock.getElapsedTime();
-
 	//Game loop
 	while (window.isOpen()) {
 
@@ -41,8 +37,6 @@ int main()
 
 		window.display(); //Tell app that window is done drawing
 	}
-
-	std::cout << "Total time: " << elapsed.asSeconds() << std::endl;
 
 	//End of application
 
