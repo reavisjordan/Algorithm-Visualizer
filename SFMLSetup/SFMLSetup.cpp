@@ -8,6 +8,14 @@
 #include <vector>
 #include <string>
 
+sf::RectangleShape plot(float height, int x, int y) { //Height of line, x position, y position
+	sf::RectangleShape line(sf::Vector2f(height, 1));
+	line.setPosition(x, y);
+	line.rotate(90);
+
+	return line;
+}
+
 int main()
 {
 	//Create an array of lines (rectangles)
@@ -35,19 +43,8 @@ int main()
 		}
 				
 		//Render
-		int xPos = 100;
-		float lineHeight = 100;
-
-		window.clear(sf::Color::Black); //Clear old frame
-
-		for (int i = 0; i < 10; i++) {
-			sf::RectangleShape line(sf::Vector2f(lineHeight, 1));
-			line.setPosition(xPos, 100);
-			line.rotate(90);
-			window.draw(line);
-			xPos += 2;
-			lineHeight += 25;
-		}
+		sf::RectangleShape line = plot(150.f, 100, 100);
+		window.draw(line);
 		
 		//Draw your display
 		window.display(); //Tell app that window is done drawing
