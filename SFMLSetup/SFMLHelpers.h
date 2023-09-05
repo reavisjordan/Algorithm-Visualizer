@@ -8,11 +8,14 @@
 #include <SFML/Network.hpp>
 #include <vector>
 #include <string>
+#include <cstdlib>
 
-sf::RectangleShape plot(int height, int x, int y) { //Height of line, x position, y position
+
+
+sf::RectangleShape plot(int height, int x, int y) { //Returns a single drawn line
 	sf::RectangleShape line(sf::Vector2f(height, 1));
-	line.setPosition(x, y);
+	line.setPosition(x, y - height);
 	line.rotate(90);
-
+	
 	return line;
 }
