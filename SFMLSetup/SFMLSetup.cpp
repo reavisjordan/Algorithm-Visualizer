@@ -7,14 +7,7 @@
 #include <SFML/Network.hpp>
 #include <vector>
 #include <string>
-
-sf::RectangleShape plot(float height, int x, int y) { //Height of line, x position, y position
-	sf::RectangleShape line(sf::Vector2f(height, 1));
-	line.setPosition(x, y);
-	line.rotate(90);
-
-	return line;
-}
+#include "SFMLHelpers.h"
 
 int main()
 {
@@ -43,7 +36,7 @@ int main()
 		}
 				
 		//Render
-		sf::RectangleShape line = plot(150.f, 100, 100);
+		sf::RectangleShape line = plot(150, 100, 100);
 		window.draw(line);
 		
 		//Draw your display
