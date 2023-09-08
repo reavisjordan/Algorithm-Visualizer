@@ -12,9 +12,9 @@
 
 
 
-sf::RectangleShape plot(int height, int x, int y) { //Returns a single drawn line
-	sf::RectangleShape line(sf::Vector2f(height, 1));
-	line.setPosition(x, y - height);
+sf::RectangleShape plot(int len, int x, int y) { //Returns a single drawn line
+	sf::RectangleShape line(sf::Vector2f(len, 1));
+	line.setPosition(x, y - len);
 	line.rotate(90);
 	
 	return line;

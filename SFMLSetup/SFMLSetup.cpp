@@ -6,38 +6,40 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 #include <vector>
+#include <algorithm>
 #include <string>
+#include <random>
+#include <ranges>
+#include <ctime>
 #include "SFMLHelpers.h"
-#include <cstdlib>
 
 int main()
 {
 	//Initialize window
 	sf::RenderWindow window(sf::VideoMode(640, 480), "Algorithm Visualizer", sf::Style::Default);
-	sf::Event event;
 
 
-	//Create and populate line (rectangle) vector
+	//Create the line (rectangle) vector
 	std::vector <sf::RectangleShape> lineVector;
-	int xpos = 100;
-
+	
+	//Defines the number of obj's to be sorted 
 	int N;
-	std::cout << "Enter the size of the vector to be sorted: ";
+	std::cout << "Enter the number of items to be sorted: ";
 	std::cin >> N;
 
-	srand(time(0));
 
-	for (int i = 1; i <= N; i++) {
-		int randomNum = rand() % N + 1;
-		sf::RectangleShape line = plot(randomNum, xpos, 200);
+	//Populates and shuffles line vector in preparation for sorting
+	int xpos = 100;
+	for (int i = 0; i < N; i++) {
+		sf::RectangleShape line = plot(i + 1, xpos + i * 5, 200);  
 		lineVector.push_back(line);
-		xpos += 5;
 	}
+	
+	std::shuffle(std::begin(lineVector), std::end(lineVector), std::default_random_engine());
 
 	//Event loop
 	while (window.isOpen()) {
-
-
+		sf::Event event;
 		//Event polling
 		while (window.pollEvent(event)) {
 			switch (event.type) {
@@ -54,7 +56,7 @@ int main()
 		//Render
 		window.clear(sf::Color::Black);
 
-		for (const sf::RectangleShape& itr : lineVector) {
+		for (auto& itr : lineVector) {
 			window.draw(itr);
 		}
 		
@@ -67,6 +69,10 @@ int main()
 	//End of event loop
 
 	std::cout << "Size of lineVector: " << lineVector.size() << std::endl;
+	for (auto itr : lineVector) {
+		sf::Vector2f size = itr.getSize();
+		std::cout << "Heights of rectangles: " << size.x << std::endl;
+	}
 
 	return 0;
 }
