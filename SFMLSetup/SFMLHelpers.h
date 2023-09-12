@@ -10,9 +10,7 @@
 #include <string>
 #include <cstdlib>
 
-
-
-sf::RectangleShape plot(int len, int x, int y) { //Returns a single drawn line
+sf::RectangleShape plot(int len, int x, int y) { //Returns a single drawn line 'len' long at position x,y
 	sf::RectangleShape line(sf::Vector2f(len, 1));
 	line.setPosition(x, y - len);
 	line.rotate(90);

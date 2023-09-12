@@ -35,7 +35,6 @@ int main()
 		lineVector.push_back(line);
 	}
 	
-	std::shuffle(std::begin(lineVector), std::end(lineVector), std::default_random_engine());
 
 	//Event loop
 	while (window.isOpen()) {
@@ -60,19 +59,10 @@ int main()
 			window.draw(itr);
 		}
 		
-
-		
 		//Draw your display
 		window.display(); //Tell app that window is done drawing
 	}
 
 	//End of event loop
-
-	std::cout << "Size of lineVector: " << lineVector.size() << std::endl;
-	for (auto itr : lineVector) {
-		sf::Vector2f size = itr.getSize();
-		std::cout << "Heights of rectangles: " << size.x << std::endl;
-	}
-
 	return 0;
 }
